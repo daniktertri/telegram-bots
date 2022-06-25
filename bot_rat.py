@@ -24,16 +24,13 @@ name=''
 bot = telebot.TeleBot('token')
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-    # Если написали «Привет»
     if message.text == "user":
         bot.send_message(message.from_user.id, user)
     if message.text == "mytext":
        bot.send_message(message.from_user.id, "Your text:")
        bot.register_next_step_handler(message, get_name)
     if message.text == "Com/"+user:
-        # Пишем приветствие
         bot.send_message(message.from_user.id, "chose command!")
-        # Готовим кнопки
         keyboard = types.InlineKeyboardMarkup()
         key_telec = types.InlineKeyboardButton(text='Shutdown', callback_data='shutdown')
         keyboard.add(key_telec)
@@ -49,16 +46,14 @@ def get_text_messages(message):
         keyboard.add(scanfiles)
         key_text_form = types.InlineKeyboardButton(text='your_text', callback_data='text_form')
         keyboard.add(key_text_form)
-        # Показываем все кнопки сразу и пишем сообщение о выборе
         bot.send_message(message.from_user.id, text='Command!', reply_markup=keyboard)
-def get_name(message): #получаем фамилию
+def get_name(message):
     global name
     name = message.text
     bot.send_message(message.from_user.id, 'sycefull')
     keyboard = types.InlineKeyboardMarkup()
     key_lev = types.InlineKeyboardButton(text='mytextopen', callback_data='text_a+')
     keyboard.add(key_lev)
-# Обработчик нажатий на кнопки
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
     if call.data == "text_hack": 
