@@ -61,12 +61,9 @@ def get_name(message): #получаем фамилию
 # Обработчик нажатий на кнопки
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
-    # Если нажали на одну из 12 кнопок — выводим гороскоп
     if call.data == "text_hack": 
-        # Формируем гороскоп
         file_path = r'C:/Users/'+user+'/Documents/pranktext.txt'
         os.system("start "+file_path)
-        # Отправляем текст в Телеграм
         bot.send_message(call.message.chat.id,"fileopen")
     if call.data == "text_form": 
         bot.send_message(call.message.chat.id,"no")
